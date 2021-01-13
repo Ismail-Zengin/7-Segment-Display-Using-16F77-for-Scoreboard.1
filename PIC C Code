@@ -1,0 +1,124 @@
+İçeriğe geç
+Ara veya atla…
+
+Çekme isteği s
+Sorunlar
+Pazar yeri
+keşfetmek
+ 
+@ İsmail-zengin 
+Git ve GitHub'ı kod olmadan öğrenin!
+Merhaba Dünya kılavuzunu kullanarak bir şube başlatacak, yorum yazacak ve bir çekme isteği açacaksınız.
+
+
+İsmail-Zengin
+/
+Projeler
+Özel
+1
+00
+Kod
+Sorunlar
+Çekme istekleri
+Hareketler
+Projeler
+Güvenlik
+İçgörüler
+Ayarlar
+Projeler/ Skor Tablosu için 16f77 Kullanan 7 Segmentli Ekran
+@ İsmail-zengin
+İsmail-Zengin Skor Tablosu İçin 16f77 Kullanarak 7 Segment Gösterim Oluşturdu
+Son kaydetme 992d3aa 27 dakika önce
+ Tarih
+ 1 katılımcı
+77 satır (65 sloc)  2,45 KB
+  
+/ ************************************************* *****************
+Uygulama Adı: Uygulamasını Göster (O-9 Sayıcı)
+
+************************************************** **************** /
+#include <16f877.h> 
+// *********** Denetleyici konfigürasyon ayarları ************
+# sigortalar XT, NOWDT, NOPROTECT, NOBROWNOUT, NOLVP, NOPUT, NOWRT, NODEBUG, NOCPD
+#use gecikmesi (saat = 4000000)
+
+#use fast_io (a) // Bir portuna yönlendirir
+#use fast_io (b) // B portuna yönlendirir
+#use fast_io (d) // D portuna yönlendirir
+
+#define takim_1 pin_a0 // Takım_1'i RA0 pinine seçilmiş
+#define takim_2 pin_a1 // Takım_2'i RA1 pinine görüntülü
+#define reset pin_a2 // Skor tablosunu resetler
+
+char sayi_1 = 0, sayi_2 = 0;
+const int digit [10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7C, 0x07, 0x7F, 0x6F};
+
+// ********* ANA PROGRAM FONKSIYONU ********
+void main ()
+{
+   setup_psp (PSP_DISABLED); // PSP birimini devre dışı
+   setup_spi (SPI_SS_DISABLED); // SPI birimini devre dışı
+   setup_timer_1 (T1_DISABLED); // T1 birimini devre dışı
+   setup_timer_2 (T2_DISABLED, 0,1); // T2 birimini devre dışı
+   setup_adc_ports (NO_ANALOGS); // ANALOg kullanımı olmaz  
+   setup_adc (ADC_OFF); // ADC birimini devre dışı  
+   setup_CCP1 (CCP_OFF); // CCP1 birimini devre dışı  
+   setup_CCP2 (CCP_OFF); // CCP2 birimini devre dışı
+   
+   set_tris_a (0x1F); // RA0, RA1 ve RA2 'i giriş diğer RA ları çıkış olarak ayarlar
+   set_tris_b (0x00); // B portunu çıkış olarak ayarlar
+   set_tris_d (0x00); // D portunu çıkış olarak ayarlar
+   
+   output_b (0x3F); // B portunu bir yapar
+   çıktı_d (0x3F); // D portunu bir yapar
+   
+   süre (1)
+   {
+   
+      eğer (giriş (pin_a0))
+      {
+      gecikme_ms (30);
+      sayi_1 ++;
+      
+         while (giriş (pin_a0))
+         {
+         output_b (rakam [sayi_1]);
+         gecikme_ms (10);
+         eğer (sayi_1> 9)
+         sayi_1 = 0;
+         }        
+      }  
+      
+      eğer (giriş (pin_a1))
+      {
+      gecikme_ms (30);
+      sayi_2 ++; 
+         while (giriş (pin_a1))
+         {
+         output_d (basamak [sayi_2]);
+         gecikme_ms (10);
+         eğer (sayi_2> 9)
+         sayi_2 = 0;
+         }
+      }  
+      
+      eğer (giriş (pin_a2))
+      {
+      sayi_1 = 0, sayi_2 = 0;
+      output_b (rakam [sayi_1]);
+      output_d (basamak [sayi_2]);
+      }   
+   }
+}
+© 2021 GitHub, Inc.
+Koşullar
+Gizlilik
+Güvenlik
+Durum
+Yardım
+GitHub ile iletişime geçin
+Fiyatlandırma
+API
+Eğitim
+Blog
+hakkında
