@@ -1,37 +1,4 @@
-İçeriğe geç
-Ara veya atla…
 
-Çekme isteği s
-Sorunlar
-Pazar yeri
-keşfetmek
- 
-@ İsmail-zengin 
-Git ve GitHub'ı kod olmadan öğrenin!
-Merhaba Dünya kılavuzunu kullanarak bir şube başlatacak, yorum yazacak ve bir çekme isteği açacaksınız.
-
-
-İsmail-Zengin
-/
-Projeler
-Özel
-1
-00
-Kod
-Sorunlar
-Çekme istekleri
-Hareketler
-Projeler
-Güvenlik
-İçgörüler
-Ayarlar
-Projeler/ Skor Tablosu için 16f77 Kullanan 7 Segmentli Ekran
-@ İsmail-zengin
-İsmail-Zengin Skor Tablosu İçin 16f77 Kullanarak 7 Segment Gösterim Oluşturdu
-Son kaydetme 992d3aa 27 dakika önce
- Tarih
- 1 katılımcı
-77 satır (65 sloc)  2,45 KB
   
 / ************************************************* *****************
 Uygulama Adı: Uygulamasını Göster (O-9 Sayıcı)
@@ -110,15 +77,3 @@ void main ()
       }   
    }
 }
-© 2021 GitHub, Inc.
-Koşullar
-Gizlilik
-Güvenlik
-Durum
-Yardım
-GitHub ile iletişime geçin
-Fiyatlandırma
-API
-Eğitim
-Blog
-hakkında
